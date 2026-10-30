@@ -1,0 +1,6 @@
+{
+  "name": "Navex AgroExport CRM - Makhana & Sattu",
+  "description": "Specialized B2B export CRM for Indian Makhana (Fox Nuts) and Chana Sattu pipelines, tracking Indian Merchant Exporters and International Importers with 1-click WhatsApp/email outreach, follow-up automations, and Kanban pipeline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

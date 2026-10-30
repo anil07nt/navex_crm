@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navex AgroExport CRM - Makhana & Chana Sattu</title>
+  <meta name="description" content="Specialized B2B export CRM for Indian Makhana (Fox Nuts) and Chana Sattu pipelines, tracking Indian Merchant Exporters and International Importers." />
+  <meta property="og:title" content="Navex AgroExport CRM - Makhana & Chana Sattu" />
+  <meta property="og:description" content="Specialized B2B export CRM for Indian Makhana (Fox Nuts) and Chana Sattu pipelines." />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            amber: {
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .kanban-col {
+      min-width: 290px;
+      max-width: 320px;
+    }
+    .drag-over {
+      background-color: #f0fdf4 !important;
+      border: 2px dashed #10b981 !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <!-- TOP HEADER -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Info -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-700 via-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-700/20">
+            <i data-lucide="sprout" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-extrabold text-lg tracking-tight text-slate-900">NAVEX AGRO</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold border border-emerald-200">Export CRM</span>
+            </div>
+            <p class="text-xs text-slate-500 hidden sm:block font-medium">Makhana (Fox Nuts) & Chana Sattu • B2B Pipeline Desk</p>
+          </div>
+        </div>
+
+        <!-- Badges & Action Buttons -->
+        <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
+          <!-- Grade Reference Guide Button -->
+          <button id="openGuideBtn" class="inline-flex items-center space-x-1 px-2 sm:px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors" title="Suta & Specification Guide">
+            <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span class="hidden md:inline">Suta & Spec Guide</span>
+          </button>
+
+          <!-- CSV Import/Export Buttons -->
+          <button id="importCsvBtn" class="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 shadow-2xs transition-colors" title="Import Google Sheets CSV">
+            <i data-lucide="upload" class="w-3.5 h-3.5 text-slate-600"></i>
+            <span class="hidden lg:inline">Import CSV</span>
+          </button>
+
+          <button id="exportCsvBtn" class="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 shadow-2xs transition-colors" title="Export Google Sheets CSV">
+            <i data-lucide="download" class="w-3.5 h-3.5 text-slate-600"></i>
+            <span class="hidden lg:inline">Export CSV</span>
+          </button>
+
+          <!-- New Lead Button -->
+          <button id="openNewLeadModalBtn" class="inline-flex items-center space-x-1 px-2.5 sm:px-3.5 py-1.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm shadow-emerald-600/30 transition-all shrink-0">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Add Lead</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBHEADER INFO STRIP -->
+  <section class="bg-slate-100/90 border-b border-slate-200 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center flex-wrap gap-2 text-slate-600">
+        <span class="inline-flex items-center gap-1 font-medium bg-white px-2 py-0.5 rounded border border-slate-200">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-600"></i> Direct Processing Hub: Mithila, Bihar
+        </span>
+        <span class="inline-flex items-center gap-1 font-medium bg-white px-2 py-0.5 rounded border border-slate-200">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600"></i> APEDA Registered & FSSAI Certified
+        </span>
+        <span class="inline-flex items-center gap-1 font-medium bg-white px-2 py-0.5 rounded border border-slate-200">
+          <i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i> GI-Tagged Mithila Makhana
+        </span>
+      </div>
+      <div class="text-slate-500 font-medium">
+        <span id="currentDateDisplay">Today</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full flex flex-col gap-6">
+
+    <!-- KPI & REMINDER BANNER -->
+    <section>
+      <!-- Action Queue Alert Banner -->
+      <div id="actionQueueBanner" class="mb-4 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border-l-4 border-amber-500 p-4 rounded-r-xl border-y border-r border-amber-200/60 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-start sm:items-center space-x-3">
+          <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+            <i data-lucide="phone-call" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <span>Today's Action Queue</span>
+              <span id="actionQueuePill" class="text-xs px-2 py-0.5 rounded-full bg-amber-500 text-white font-extrabold">0 Leads</span>
+            </h2>
+            <p class="text-xs text-slate-600">Prioritize these calls first. Contains all overdue follow-ups and buyers scheduled for contact today.</p>
+          </div>
+        </div>
+        <button id="toggleActionQueueBtn" class="inline-flex items-center justify-center space-x-2 px-4 py-2 text-xs font-bold rounded-lg border transition-all text-amber-900 bg-amber-100 hover:bg-amber-200 border-amber-300 shrink-0">
+          <i data-lucide="filter" class="w-4 h-4"></i>
+          <span id="actionQueueBtnText">Show Action Queue Only</span>
+        </button>
+      </div>
+
+      <!-- 4 KPI Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Total Leads -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:border-slate-300 transition-all cursor-pointer" onclick="app.setQuickFilter('all')">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Leads</span>
+            <span class="p-2 rounded-lg bg-slate-100 text-slate-700">
+              <i data-lucide="users" class="w-4 h-4"></i>
+            </span>
+          </div>
+          <div class="flex items-baseline space-x-2">
+            <span id="kpiTotal" class="text-2xl font-black text-slate-900">0</span>
+            <span class="text-xs text-slate-500">active accounts</span>
+          </div>
+        </div>
+
+        <!-- Overdue Follow-ups -->
+        <div class="bg-white p-4 rounded-xl border border-red-200 bg-red-50/20 shadow-2xs hover:border-red-300 transition-all cursor-pointer" onclick="app.setQuickFilter('overdue')">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-red-700 uppercase tracking-wider">Overdue</span>
+            <span class="p-2 rounded-lg bg-red-100 text-red-700 animate-pulse">
+              <i data-lucide="alert-circle" class="w-4 h-4"></i>
+            </span>
+          </div>
+          <div class="flex items-baseline space-x-2">
+            <span id="kpiOverdue" class="text-2xl font-black text-red-600">0</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800">Requires Call</span>
+          </div>
+        </div>
+
+        <!-- Due Today -->
+        <div class="bg-white p-4 rounded-xl border border-amber-200 bg-amber-50/20 shadow-2xs hover:border-amber-300 transition-all cursor-pointer" onclick="app.setQuickFilter('due_today')">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-amber-700 uppercase tracking-wider">Due Today</span>
+            <span class="p-2 rounded-lg bg-amber-100 text-amber-700">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+            </span>
+          </div>
+          <div class="flex items-baseline space-x-2">
+            <span id="kpiDueToday" class="text-2xl font-black text-amber-600">0</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">Scheduled</span>
+          </div>
+        </div>
+
+        <!-- Active Samples Dispatched -->
+        <div class="bg-white p-4 rounded-xl border border-blue-200 bg-blue-50/20 shadow-2xs hover:border-blue-300 transition-all cursor-pointer" onclick="app.setQuickStage('Sample Dispatched')">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Samples In Transit</span>
+            <span class="p-2 rounded-lg bg-blue-100 text-blue-700">
+              <i data-lucide="package" class="w-4 h-4"></i>
+            </span>
+          </div>
+          <div class="flex items-baseline space-x-2">
+            <span id="kpiSamples" class="text-2xl font-black text-blue-700">0</span>
+            <span class="text-xs font-medium text-blue-600">Testing active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROLS & FILTER BAR -->
+    <section class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex flex-col gap-4">
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search company, location, notes, phone, email..."
+            class="w-full pl-9 pr-8 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          />
+          <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- View Switcher -->
+        <div class="flex items-center rounded-lg bg-slate-100 p-1 border border-slate-200 shrink-0 self-start md:self-auto">
+          <button id="tableViewBtn" class="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-md transition-all bg-white text-slate-900 shadow-2xs">
+            <i data-lucide="table" class="w-4 h-4 text-emerald-600"></i>
+            <span>Table View</span>
+          </button>
+          <button id="kanbanViewBtn" class="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all text-slate-600 hover:text-slate-900">
+            <i data-lucide="kanban" class="w-4 h-4"></i>
+            <span>Kanban Pipeline</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Dropdowns Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-3 border-t border-slate-100">
+        <!-- Pipeline / Buyer Type Filter -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Buyer Pipeline</label>
+          <select id="buyerTypeFilter" class="w-full text-xs py-1.5 px-2.5 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="All">All Pipelines (Indian + Intl)</option>
+            <option value="Indian Merchant Exporter">🇮🇳 Indian Merchant Exporter</option>
+            <option value="International Importer">🌐 International Importer (Direct Export)</option>
+          </select>
+        </div>
+
+        <!-- Product Category Filter -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Product Category</label>
+          <select id="productFilter" class="w-full text-xs py-1.5 px-2.5 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="All">All Products</option>
+            <option value="Makhana">Makhana (Fox Nuts)</option>
+            <option value="Chana Sattu">Chana Sattu (Roasted)</option>
+            <option value="Both">Both / Mixed Catalog</option>
+          </select>
+        </div>
+
+        <!-- Stage Filter -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Pipeline Stage</label>
+          <select id="stageFilter" class="w-full text-xs py-1.5 px-2.5 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="All">All Stages</option>
+            <option value="New Lead">1. New Lead</option>
+            <option value="Intro Sent">2. Intro Sent</option>
+            <option value="Sample Dispatched">3. Sample Dispatched</option>
+            <option value="Price Negotiation">4. Price Negotiation</option>
+            <option value="Closed Won">5. Closed Won</option>
+          </select>
+        </div>
+
+        <!-- Follow-Up Date Status Filter -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Follow-Up Urgency</label>
+          <select id="dateStatusFilter" class="w-full text-xs py-1.5 px-2.5 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="all">All Follow-ups</option>
+            <option value="overdue">⚠️ Overdue Only</option>
+            <option value="due_today">🔔 Due Today Only</option>
+            <option value="upcoming">📅 Upcoming Follow-ups</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Active Filters Tag Strip -->
+      <div id="filterPillsRow" class="flex flex-wrap items-center gap-2 pt-1">
+        <span class="text-xs text-slate-400 font-medium">Results: <strong id="filterResultCount" class="text-slate-800">6</strong> leads found</span>
+        <button id="resetFiltersBtn" class="text-xs text-emerald-700 hover:text-emerald-800 font-semibold underline ml-auto hidden">
+          Reset Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- CONTENT AREA: TABLE VIEW -->
+    <section id="tableViewSection" class="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+      <!-- Mobile scroll hint -->
+      <div class="sm:hidden flex items-center justify-between px-3 py-1.5 bg-slate-50 border-b border-slate-100 text-[10px] text-slate-500 font-medium">
+        <span>← Swipe table horizontally for actions & details →</span>
+        <i data-lucide="chevrons-right" class="w-3.5 h-3.5 text-slate-400"></i>
+      </div>
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 uppercase font-bold text-[11px] tracking-wider">
+            <tr>
+              <th scope="col" class="py-3.5 px-4">Company & Location</th>
+              <th scope="col" class="py-3.5 px-4">Buyer Track</th>
+              <th scope="col" class="py-3.5 px-4">Product Interest & Grade</th>
+              <th scope="col" class="py-3.5 px-4">Pipeline Stage</th>
+              <th scope="col" class="py-3.5 px-4">Follow-Up Schedule</th>
+              <th scope="col" class="py-3.5 px-4">1-Click Outreach</th>
+              <th scope="col" class="py-3.5 px-4 text-center">Quick Log</th>
+              <th scope="col" class="py-3.5 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody" class="divide-y divide-slate-100">
+            <!-- Dynamic Rows Injected Here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State Table -->
+      <div id="tableEmptyState" class="hidden py-12 px-4 text-center">
+        <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mb-3">
+          <i data-lucide="inbox" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-sm font-bold text-slate-800">No matching leads found</h3>
+        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Try clearing search keywords or loosening the stage/pipeline filters.</p>
+        <button onclick="app.resetFilters()" class="mt-4 px-3.5 py-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 rounded-lg border border-emerald-200 hover:bg-emerald-100 transition-colors">
+          Clear All Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- CONTENT AREA: KANBAN PIPELINE VIEW -->
+    <section id="kanbanViewSection" class="hidden overflow-x-auto pb-4 custom-scrollbar">
+      <div class="flex items-start gap-4 min-w-[1550px]">
+
+        <!-- Column: New Lead -->
+        <div class="kanban-col bg-slate-100/90 rounded-xl p-3 border border-slate-200/80 flex flex-col gap-3" data-stage="New Lead">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
+              <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">New Lead</span>
+            </div>
+            <span class="kanban-badge text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">0</span>
+          </div>
+          <div class="kanban-dropzone flex flex-col gap-2.5 min-h-[300px]" data-stage="New Lead">
+            <!-- Cards -->
+          </div>
+        </div>
+
+        <!-- Column: Intro Sent -->
+        <div class="kanban-col bg-slate-100/90 rounded-xl p-3 border border-slate-200/80 flex flex-col gap-3" data-stage="Intro Sent">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+              <span class="text-xs font-bold text-indigo-900 uppercase tracking-wider">Intro Sent</span>
+            </div>
+            <span class="kanban-badge text-xs font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700">0</span>
+          </div>
+          <div class="kanban-dropzone flex flex-col gap-2.5 min-h-[300px]" data-stage="Intro Sent">
+            <!-- Cards -->
+          </div>
+        </div>
+
+        <!-- Column: Sample Dispatched -->
+        <div class="kanban-col bg-slate-100/90 rounded-xl p-3 border border-blue-200/80 bg-blue-50/20 flex flex-col gap-3" data-stage="Sample Dispatched">
+          <div class="flex items-center justify-between pb-2 border-b border-blue-200">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              <span class="text-xs font-bold text-blue-900 uppercase tracking-wider">Sample Dispatched</span>
+            </div>
+            <span class="kanban-badge text-xs font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">0</span>
+          </div>
+          <div class="kanban-dropzone flex flex-col gap-2.5 min-h-[300px]" data-stage="Sample Dispatched">
+            <!-- Cards -->
+          </div>
+        </div>
+
+        <!-- Column: Price Negotiation -->
+        <div class="kanban-col bg-slate-100/90 rounded-xl p-3 border border-amber-200/80 bg-amber-50/20 flex flex-col gap-3" data-stage="Price Negotiation">
+          <div class="flex items-center justify-between pb-2 border-b border-amber-200">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="text-xs font-bold text-amber-900 uppercase tracking-wider">Price Negotiation</span>
+            </div>
+            <span class="kanban-badge text-xs font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">0</span>
+          </div>
+          <div class="kanban-dropzone flex flex-col gap-2.5 min-h-[300px]" data-stage="Price Negotiation">
+            <!-- Cards -->
+          </div>
+        </div>
+
+        <!-- Column: Closed Won -->
+        <div class="kanban-col bg-slate-100/90 rounded-xl p-3 border border-emerald-200/80 bg-emerald-50/20 flex flex-col gap-3" data-stage="Closed Won">
+          <div class="flex items-center justify-between pb-2 border-b border-emerald-200">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider">Closed Won / Dispatch</span>
+            </div>
+            <span class="kanban-badge text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">0</span>
+          </div>
+          <div class="kanban-dropzone flex flex-col gap-2.5 min-h-[300px]" data-stage="Closed Won">
+            <!-- Cards -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-4 px-4 text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-slate-700">Navex AgroExport CRM</span>
+        <span>•</span>
+        <span>Makhana & Chana Sattu Export Operations</span>
+      </div>
+      <div class="flex items-center space-x-4 text-slate-400">
+        <span>Persistent Browser Storage (localStorage)</span>
+        <span>•</span>
+        <button onclick="app.resetToDefaultSampleData()" class="text-slate-600 hover:text-red-600 underline">Reset to Sample Leads</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. ADD / EDIT LEAD MODAL -->
+  <div id="leadModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto custom-scrollbar flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 sticky top-0 bg-white z-10">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+            <i data-lucide="building-2" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 id="modalTitle" class="text-base font-bold text-slate-900">Add New Buyer Lead</h3>
+            <p class="text-xs text-slate-500">Record customer requirements and contact schedule</p>
+          </div>
+        </div>
+        <button id="closeLeadModalBtn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Form Body -->
+      <form id="leadForm" class="p-6 space-y-4 text-xs">
+        <input type="hidden" id="leadId" />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Company Name -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Company Name <span class="text-red-500">*</span></label>
+            <input type="text" id="companyName" required placeholder="e.g. Glee Impex Private Limited" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+
+          <!-- Buyer Type / Pipeline Track -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Buyer Pipeline Track <span class="text-red-500">*</span></label>
+            <select id="buyerType" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white">
+              <option value="Indian Merchant Exporter">🇮🇳 Indian Merchant Exporter (Domestic Bulk)</option>
+              <option value="International Importer">🌐 International Importer (UAE, USA, UK, etc.)</option>
+            </select>
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Location / Port <span class="text-red-500">*</span></label>
+            <input type="text" id="location" required placeholder="e.g. New Delhi, Delhi or Dubai, UAE" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+
+          <!-- Contact Person / Designation -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Contact Person & Title</label>
+            <input type="text" id="contactPerson" placeholder="e.g. Rajesh Kumar (Procurement Head)" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+
+          <!-- Phone (WhatsApp) -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Phone / WhatsApp Number <span class="text-red-500">*</span></label>
+            <input type="tel" id="phone" required placeholder="e.g. +919319294022" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+            <span class="text-[10px] text-slate-400 mt-0.5 block">Include country code (+91 for India, +971 for UAE, +1 for US)</span>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+            <input type="email" id="email" required placeholder="e.g. procurement@company.com" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+          <!-- Product Category -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Product Category <span class="text-red-500">*</span></label>
+            <select id="productCategory" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white">
+              <option value="Makhana">Makhana (Fox Nuts)</option>
+              <option value="Chana Sattu">Chana Sattu (Roasted Gram Flour)</option>
+              <option value="Both">Both (Makhana + Chana Sattu)</option>
+            </select>
+          </div>
+
+          <!-- Product Specification / Suta Grade -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Specific Grade & Packaging</label>
+            <input type="text" id="productInterest" placeholder="e.g. Makhana (5-6+ Suta Jumbo) or Chana Sattu 50kg Bags" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+
+          <!-- Pipeline Stage -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Current Pipeline Stage <span class="text-red-500">*</span></label>
+            <select id="stage" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white">
+              <option value="New Lead">1. New Lead</option>
+              <option value="Intro Sent">2. Intro Sent</option>
+              <option value="Sample Dispatched">3. Sample Dispatched</option>
+              <option value="Price Negotiation">4. Price Negotiation</option>
+              <option value="Closed Won">5. Closed Won</option>
+            </select>
+          </div>
+
+          <!-- Next Follow-Up Date -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Next Follow-Up Date <span class="text-red-500">*</span></label>
+            <div class="flex items-center gap-2">
+              <input type="date" id="nextFollowUpDate" required class="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+              <button type="button" onclick="app.setModalDateOffset(0)" class="px-2 py-2 bg-slate-100 hover:bg-slate-200 rounded text-[11px] font-semibold text-slate-700">Today</button>
+              <button type="button" onclick="app.setModalDateOffset(3)" class="px-2 py-2 bg-slate-100 hover:bg-slate-200 rounded text-[11px] font-semibold text-slate-700">+3d</button>
+              <button type="button" onclick="app.setModalDateOffset(7)" class="px-2 py-2 bg-slate-100 hover:bg-slate-200 rounded text-[11px] font-semibold text-slate-700">+7d</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+          <!-- Sample Courier Tracking -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Sample Tracking / AWB # (if dispatched)</label>
+            <input type="text" id="sampleTrackingNumber" placeholder="e.g. DHL #8839210 or Delhivery #DL77382" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+
+          <!-- Estimated Order Size -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Target Volume / Value</label>
+            <input type="text" id="estimatedOrderSize" placeholder="e.g. 1 x 40ft HQ Container (approx 5.5 MT)" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" />
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="pt-2 border-t border-slate-100">
+          <label class="block font-bold text-slate-700 mb-1">Call Notes, MOQs & Requirements</label>
+          <textarea id="notes" rows="3" placeholder="Key details from conversation, buyer certifications required, target pricing, packaging specs..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-200">
+          <button type="button" id="cancelLeadModalBtn" class="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm transition-all">
+            Save Lead
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. WHATSAPP TEMPLATE PREVIEW MODAL -->
+  <div id="whatsappModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-lg overflow-hidden flex flex-col">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-200 bg-emerald-600 text-white">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <h3 class="font-bold text-sm">Send WhatsApp Outreach</h3>
+        </div>
+        <button id="closeWhatsAppModalBtn" class="text-white/80 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-4 text-xs">
+        <div>
+          <span class="text-slate-500">Recipient:</span>
+          <span id="waRecipient" class="font-bold text-slate-800 ml-1">Company (+91...)</span>
+        </div>
+
+        <!-- Template Selector -->
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Select Message Template</label>
+          <select id="waTemplateSelect" class="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="default">1. Direct Intro & Facility Background</option>
+            <option value="sample_followup">2. Sample Tracking & Testing Feedback</option>
+            <option value="price_quote">3. Commercial FOB/Ex-Warehouse Quote</option>
+          </select>
+        </div>
+
+        <!-- Message Preview Box -->
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Message Preview (Editable)</label>
+          <textarea id="waMessageText" rows="6" class="w-full p-3 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono text-[11px]"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <span class="text-[11px] text-slate-400">Opens WhatsApp Web / Mobile directly</span>
+          <div class="flex items-center space-x-2">
+            <button id="copyWaTextBtn" type="button" class="px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg">
+              Copy Text
+            </button>
+            <button id="sendWaDirectBtn" type="button" class="inline-flex items-center space-x-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Open in WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SUTA & EXPORT SPECIFICATION REFERENCE GUIDE MODAL -->
+  <div id="guideModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto custom-scrollbar flex flex-col">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 sticky top-0 bg-white z-10">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+            <i data-lucide="award" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Agro-Export Technical Standards & Suta Guide</h3>
+            <p class="text-xs text-slate-500">Mithila Makhana & Roasted Chana Sattu specifications for B2B export calls</p>
+          </div>
+        </div>
+        <button id="closeGuideModalBtn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-6 text-xs text-slate-700">
+        <!-- Makhana Grading System -->
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            Makhana (Fox Nuts / Gorgon Nuts) Suta Sizing Matrix
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-extrabold text-slate-900">6+ Suta (Jumbo)</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Top Tier</span>
+              </div>
+              <p class="text-[11px] text-slate-600 font-medium">Diameter: <strong>19mm - 22mm+</strong></p>
+              <p class="text-[11px] text-slate-500 mt-1">Export prime grade. Preferred by buyers in USA, Canada, UK, and UAE for luxury retail pouches. Maximum puff volume & white luster.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-extrabold text-slate-900">5 - 6 Suta</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Standard Bulk</span>
+              </div>
+              <p class="text-[11px] text-slate-600 font-medium">Diameter: <strong>16mm - 19mm</strong></p>
+              <p class="text-[11px] text-slate-500 mt-1">Highest volume commercial export grade. Optimal balance of price-to-size for Indian merchant exporters and international private-label snack packers.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-extrabold text-slate-900">4 - 5 Suta</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">Commercial</span>
+              </div>
+              <p class="text-[11px] text-slate-600 font-medium">Diameter: <strong>13mm - 16mm</strong></p>
+              <p class="text-[11px] text-slate-500 mt-1">Commercial / processing grade. Used for flavored snack lines, flour milling, catering packs, and sweet confectionery blends.</p>
+            </div>
+          </div>
+
+          <!-- Quality Parameters -->
+          <div class="mt-3 p-3 bg-emerald-50/50 rounded-xl border border-emerald-100 text-[11px] space-y-1">
+            <span class="font-bold text-emerald-900 block">Crucial Lab Parameters:</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1 text-slate-700">
+              <div>• Moisture: <strong>&lt; 8.5%</strong></div>
+              <div>• Hard Seed (Kani): <strong>&lt; 0.3%</strong></div>
+              <div>• Broken / Chura: <strong>&lt; 1.0%</strong></div>
+              <div>• Bleach: <strong>100% Unbleached</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chana Sattu Standards -->
+        <div class="pt-4 border-t border-slate-200">
+          <h4 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            Roasted Chana Sattu (Bengal Gram Flour) Export Standards
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="font-bold text-slate-900 block mb-1">Processing Method & Purity</span>
+              <p class="text-slate-600 text-[11px]">Direct wood-fired sand roasted Bihar desi chana. Complete de-husking with mechanical air aspiration. Zero adulteration with yellow pea (matar) flour.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="font-bold text-slate-900 block mb-1">Nutritional & Packaging Benchmarks</span>
+              <p class="text-slate-600 text-[11px]">Protein content <strong>22g - 24g per 100g</strong>. Fine 80-100 mesh texture for instant drink solubility. Export packed in 500g nitrogen flushed vacuum pouches or 25kg multi-wall paper bags.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Export Logistics Check -->
+        <div class="pt-4 border-t border-slate-200">
+          <h4 class="text-sm font-bold text-slate-900 mb-2">Export Compliance Ready:</h4>
+          <div class="flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md font-medium text-slate-700">✓ APEDA Export License</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md font-medium text-slate-700">✓ FSSAI Central License</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md font-medium text-slate-700">✓ Phytosanitary Certificate</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md font-medium text-slate-700">✓ Certificate of Origin (COO)</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md font-medium text-slate-700">✓ NABL Accredited Lab COA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <button id="closeGuideBottomBtn" class="px-4 py-2 text-xs font-bold text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-100">
+          Close Guide
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CSV IMPORT MODAL -->
+  <div id="importModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-lg overflow-hidden flex flex-col">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-200">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="file-spreadsheet" class="w-5 h-5 text-emerald-600"></i>
+          <h3 class="font-bold text-sm text-slate-900">Import Leads from Google Sheets (CSV)</h3>
+        </div>
+        <button id="closeImportModalBtn" class="text-slate-400 hover:text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-4 text-xs">
+        <p class="text-slate-600 leading-relaxed">
+          Upload a <strong>.csv</strong> file exported from Google Sheets or Excel. Columns such as <em>Company Name, Buyer Type, Phone, Email, Product, Stage, Next Follow-Up, Notes</em> will be automatically mapped.
+        </p>
+
+        <!-- Dropzone / File Picker -->
+        <div class="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-emerald-500 transition-colors bg-slate-50">
+          <input type="file" id="csvFileInput" accept=".csv" class="hidden" />
+          <label for="csvFileInput" class="cursor-pointer flex flex-col items-center">
+            <i data-lucide="upload-cloud" class="w-8 h-8 text-emerald-600 mb-2"></i>
+            <span class="font-bold text-slate-800">Click to choose CSV file</span>
+            <span class="text-slate-400 text-[11px] mt-1">or drag and drop your exported file here</span>
+            <span id="chosenFileName" class="mt-2 text-xs font-semibold text-emerald-700"></span>
+          </label>
+        </div>
+
+        <!-- Or Paste Raw CSV -->
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Or Paste CSV Data Directly:</label>
+          <textarea id="rawCsvText" rows="4" placeholder="Company Name,Buyer Type,Phone,Email,Product..." class="w-full p-2 border border-slate-300 rounded-lg text-[11px] font-mono"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <button id="downloadTemplateBtn" type="button" class="text-xs text-emerald-700 hover:underline font-semibold flex items-center gap-1">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download CSV Template
+          </button>
+          <div class="flex items-center space-x-2">
+            <button id="cancelImportBtn" type="button" class="px-3 py-1.5 text-xs font-semibold text-slate-600 bg-slate-100 rounded-lg">Cancel</button>
+            <button id="processImportBtn" type="button" class="px-4 py-1.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm">
+              Process & Add Leads
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- ==================== VANILLA JAVASCRIPT APPLICATION CODE ==================== -->
+  <script>
+    /**
+     * Navex AgroExport CRM - Client Engine
+     */
+    const STORAGE_KEY = 'navex_agroexport_leads_v2';
+
+    // Helper: format Date to YYYY-MM-DD
+    function toISODate(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    // Helper: Add relative days
+    function getOffsetDate(days) {
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return toISODate(d);
+    }
+
+    const TODAY = toISODate(new Date());
+    const YESTERDAY = getOffsetDate(-1);
+    const TOMORROW = getOffsetDate(1);
+
+    // Initial Real Leads requested by User
+    const INITIAL_LEADS = [
+      {
+        id: 'lead_glee_01',
+        companyName: 'Glee Impex Private Limited',
+        buyerType: 'Indian Merchant Exporter',
+        location: 'New Delhi, Delhi',
+        contactPerson: 'Procurement Director',
+        phone: '+919319294022',
+        email: 'gleeimpex@gmail.com',
+        productInterest: 'Makhana (5-6+ Suta Jumbo)',
+        productCategory: 'Makhana',
+        stage: 'Sample Dispatched',
+        nextFollowUpDate: TODAY, // Due Today
+        lastContactDate: getOffsetDate(-3),
+        sampleTrackingNumber: 'BLUEDART-882910',
+        estimatedOrderSize: '20 MT Contract',
+        notes: 'Globally recognized fox nut export brand. Testing 5-6+ suta sample for European client dispatch.'
+      },
+      {
+        id: 'lead_cilantro_02',
+        companyName: 'Cilantro Food Products Pvt. Ltd.',
+        buyerType: 'Indian Merchant Exporter',
+        location: 'Ahmedabad, Gujarat',
+        contactPerson: 'Harshil Patel',
+        phone: '+918048262534',
+        email: 'info@roscaglobal.com',
+        productInterest: 'Makhana & Chana Sattu',
+        productCategory: 'Both',
+        stage: 'Intro Sent',
+        nextFollowUpDate: YESTERDAY, // Overdue
+        lastContactDate: getOffsetDate(-5),
+        sampleTrackingNumber: '',
+        estimatedOrderSize: 'Combined 10 MT',
+        notes: 'Established bulk exporter of high-grade fox nuts. Discussing FOB Mundra pricing.'
+      },
+      {
+        id: 'lead_kitchen_03',
+        companyName: 'Kitchen Xpress Overseas Limited',
+        buyerType: 'Indian Merchant Exporter',
+        location: 'Gandhinagar, Gujarat',
+        contactPerson: 'Gargi Shah',
+        phone: '+919898980002',
+        email: 'gargi@kxol.in',
+        productInterest: 'Chana Sattu (Bulk)',
+        productCategory: 'Chana Sattu',
+        stage: 'Price Negotiation',
+        nextFollowUpDate: TODAY, // Due Today
+        lastContactDate: getOffsetDate(-2),
+        sampleTrackingNumber: '',
+        estimatedOrderSize: '2 x 20ft Containers',
+        notes: 'Discuss private label packaging MOQ. Requirement: 100% roasted chana, traditional aroma.'
+      },
+      {
+        id: 'lead_foodsure_04',
+        companyName: 'Foodsure',
+        buyerType: 'Indian Merchant Exporter',
+        location: 'New Delhi, Delhi',
+        contactPerson: 'Vendor Management',
+        phone: '+919870533566',
+        email: 'wecare@foodsure.in',
+        productInterest: 'Makhana (4-5 Suta)',
+        productCategory: 'Makhana',
+        stage: 'New Lead',
+        nextFollowUpDate: TOMORROW, // Upcoming
+        lastContactDate: getOffsetDate(-1),
+        sampleTrackingNumber: '',
+        estimatedOrderSize: '5 MT Monthly',
+        notes: 'Initial vendor onboarding inquiry. Looking for commercial grade 4-5 suta for snack roasting.'
+      },
+      {
+        id: 'lead_chau_05',
+        companyName: 'Chau Foods',
+        buyerType: 'Indian Merchant Exporter',
+        location: 'New Delhi, Delhi',
+        contactPerson: 'Sanjay Chau',
+        phone: '+919599021447',
+        email: 'hello@chaufoods.com',
+        productInterest: 'Makhana (6+ Suta)',
+        productCategory: 'Makhana',
+        stage: 'Intro Sent',
+        nextFollowUpDate: TODAY, // Due Today
+        lastContactDate: getOffsetDate(-4),
+        sampleTrackingNumber: '',
+        estimatedOrderSize: '15 MT Bulk',
+        notes: 'APEDA registered & FSSAI certified buyer. Requires high puffing ratio and moisture under 8%.'
+      },
+      {
+        id: 'lead_almaya_06',
+        companyName: 'Al Maya Trading Co. (Sample)',
+        buyerType: 'International Importer',
+        location: 'Dubai, UAE',
+        contactPerson: 'Tariq Mansoor (Import Mgr)',
+        phone: '+97141234567',
+        email: 'procurement@almaya.ae',
+        productInterest: 'Both (Private Label)',
+        productCategory: 'Both',
+        stage: 'Sample Dispatched',
+        nextFollowUpDate: YESTERDAY, // Overdue
+        lastContactDate: getOffsetDate(-6),
+        sampleTrackingNumber: 'DHL-EXPRESS-992014',
+        estimatedOrderSize: '1 x 40ft HQ (Jebel Ali)',
+        notes: 'Sent 2kg sample of roasted Chana Sattu & 5 Suta Makhana via DHL. Reviewing CIF Jebel Ali rates.'
+      }
+    ];
+
+    class AgroCRM {
+      constructor() {
+        this.leads = [];
+        this.currentView = 'table'; // 'table' | 'kanban'
+        this.filters = {
+          searchQuery: '',
+          buyerType: 'All',
+          productCategory: 'All',
+          stage: 'All',
+          dateStatus: 'all',
+          actionQueueOnly: false
+        };
+        this.activeWhatsAppLead = null;
+
+        this.init();
+      }
+
+      init() {
+        this.loadLeads();
+        this.bindEvents();
+        this.renderAll();
+        this.updateDateDisplay();
+      }
+
+      loadLeads() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          try {
+            this.leads = JSON.parse(stored);
+          } catch (e) {
+            console.error('Failed to parse localStorage leads, restoring defaults', e);
+            this.leads = [...INITIAL_LEADS];
+            this.saveLeads();
+          }
+        } else {
+          this.leads = [...INITIAL_LEADS];
+          this.saveLeads();
+        }
+      }
+
+      saveLeads() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.leads));
+      }
+
+      resetToDefaultSampleData() {
+        if (confirm('Reset CRM to the default 6 sample leads? Any manual edits will be replaced.')) {
+          this.leads = [...INITIAL_LEADS];
+          this.saveLeads();
+          this.renderAll();
+          this.showToast('Reset to original sample leads completed!', 'success');
+        }
+      }
+
+      updateDateDisplay() {
+        const d = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        document.getElementById('currentDateDisplay').textContent = 'Today: ' + d.toLocaleDateString('en-US', options);
+      }
+
+      bindEvents() {
+        // Search
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        searchInput.addEventListener('input', (e) => {
+          this.filters.searchQuery = e.target.value;
+          clearSearchBtn.classList.toggle('hidden', !e.target.value);
+          this.renderViews();
+        });
+        clearSearchBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          this.filters.searchQuery = '';
+          clearSearchBtn.classList.add('hidden');
+          this.renderViews();
+        });
+
+        // Filter Dropdowns
+        document.getElementById('buyerTypeFilter').addEventListener('change', (e) => {
+          this.filters.buyerType = e.target.value;
+          this.renderViews();
+        });
+        document.getElementById('productFilter').addEventListener('change', (e) => {
+          this.filters.productCategory = e.target.value;
+          this.renderViews();
+        });
+        document.getElementById('stageFilter').addEventListener('change', (e) => {
+          this.filters.stage = e.target.value;
+          this.renderViews();
+        });
+        document.getElementById('dateStatusFilter').addEventListener('change', (e) => {
+          this.filters.dateStatus = e.target.value;
+          this.renderViews();
+        });
+
+        // Action Queue Toggle
+        document.getElementById('toggleActionQueueBtn').addEventListener('click', () => {
+          this.filters.actionQueueOnly = !this.filters.actionQueueOnly;
+          this.updateActionQueueUI();
+          this.renderViews();
+        });
+
+        // Reset Filters Button
+        document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+          this.resetFilters();
+        });
+
+        // View Switcher
+        document.getElementById('tableViewBtn').addEventListener('click', () => {
+          this.switchView('table');
+        });
+        document.getElementById('kanbanViewBtn').addEventListener('click', () => {
+          this.switchView('kanban');
+        });
+
+        // Modal Controls
+        document.getElementById('openNewLeadModalBtn').addEventListener('click', () => {
+          this.openLeadModal();
+        });
+        document.getElementById('closeLeadModalBtn').addEventListener('click', () => {
+          this.closeLeadModal();
+        });
+        document.getElementById('cancelLeadModalBtn').addEventListener('click', () => {
+          this.closeLeadModal();
+        });
+        document.getElementById('leadForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleSaveLead();
+        });
+
+        // WhatsApp Modal Controls
+        document.getElementById('closeWhatsAppModalBtn').addEventListener('click', () => {
+          this.closeWhatsAppModal();
+        });
+        document.getElementById('waTemplateSelect').addEventListener('change', (e) => {
+          this.updateWhatsAppPreview(e.target.value);
+        });
+        document.getElementById('copyWaTextBtn').addEventListener('click', () => {
+          const txt = document.getElementById('waMessageText').value;
+          navigator.clipboard.writeText(txt);
+          this.showToast('Copied WhatsApp message to clipboard!', 'info');
+        });
+        document.getElementById('sendWaDirectBtn').addEventListener('click', () => {
+          this.executeWhatsAppSend();
+        });
+
+        // Guide Modal
+        document.getElementById('openGuideBtn').addEventListener('click', () => {
+          document.getElementById('guideModal').classList.remove('hidden');
+        });
+        document.getElementById('closeGuideModalBtn').addEventListener('click', () => {
+          document.getElementById('guideModal').classList.add('hidden');
+        });
+        document.getElementById('closeGuideBottomBtn').addEventListener('click', () => {
+          document.getElementById('guideModal').classList.add('hidden');
+        });
+
+        // CSV Import/Export
+        document.getElementById('exportCsvBtn').addEventListener('click', () => {
+          this.exportCsv();
+        });
+        document.getElementById('importCsvBtn').addEventListener('click', () => {
+          document.getElementById('importModal').classList.remove('hidden');
+        });
+        document.getElementById('closeImportModalBtn').addEventListener('click', () => {
+          document.getElementById('importModal').classList.add('hidden');
+        });
+        document.getElementById('cancelImportBtn').addEventListener('click', () => {
+          document.getElementById('importModal').classList.add('hidden');
+        });
+        document.getElementById('downloadTemplateBtn').addEventListener('click', () => {
+          this.downloadCsvTemplate();
+        });
+        document.getElementById('processImportBtn').addEventListener('click', () => {
+          this.processCsvImport();
+        });
+        document.getElementById('csvFileInput').addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            document.getElementById('chosenFileName').textContent = 'Selected: ' + file.name;
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+              document.getElementById('rawCsvText').value = evt.target.result;
+            };
+            reader.readAsText(file);
+          }
+        });
+
+        // Drag and drop for Kanban
+        this.initKanbanDragDrop();
+      }
+
+      switchView(view) {
+        this.currentView = view;
+        const tableBtn = document.getElementById('tableViewBtn');
+        const kanbanBtn = document.getElementById('kanbanViewBtn');
+        const tableSec = document.getElementById('tableViewSection');
+        const kanbanSec = document.getElementById('kanbanViewSection');
+
+        if (view === 'table') {
+          tableBtn.className = 'flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-md transition-all bg-white text-slate-900 shadow-2xs';
+          kanbanBtn.className = 'flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all text-slate-600 hover:text-slate-900';
+          tableSec.classList.remove('hidden');
+          kanbanSec.classList.add('hidden');
+        } else {
+          kanbanBtn.className = 'flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-md transition-all bg-white text-slate-900 shadow-2xs';
+          tableBtn.className = 'flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all text-slate-600 hover:text-slate-900';
+          tableSec.classList.add('hidden');
+          kanbanSec.classList.remove('hidden');
+        }
+        lucide.createIcons();
+      }
+
+      updateActionQueueUI() {
+        const banner = document.getElementById('actionQueueBanner');
+        const btn = document.getElementById('toggleActionQueueBtn');
+        const text = document.getElementById('actionQueueBtnText');
+
+        if (this.filters.actionQueueOnly) {
+          banner.classList.add('ring-2', 'ring-amber-500');
+          btn.className = 'inline-flex items-center justify-center space-x-2 px-4 py-2 text-xs font-bold rounded-lg border transition-all text-white bg-amber-600 hover:bg-amber-700 border-amber-600 shadow-sm shrink-0';
+          text.textContent = 'Showing Action Queue (Click to View All)';
+        } else {
+          banner.classList.remove('ring-2', 'ring-amber-500');
+          btn.className = 'inline-flex items-center justify-center space-x-2 px-4 py-2 text-xs font-bold rounded-lg border transition-all text-amber-900 bg-amber-100 hover:bg-amber-200 border-amber-300 shrink-0';
+          text.textContent = 'Show Action Queue Only';
+        }
+      }
+
+      setQuickFilter(status) {
+        this.filters.actionQueueOnly = false;
+        this.filters.dateStatus = status;
+        document.getElementById('dateStatusFilter').value = status;
+        this.updateActionQueueUI();
+        this.renderViews();
+      }
+
+      setQuickStage(stage) {
+        this.filters.actionQueueOnly = false;
+        this.filters.stage = stage;
+        document.getElementById('stageFilter').value = stage;
+        this.updateActionQueueUI();
+        this.renderViews();
+      }
+
+      resetFilters() {
+        this.filters = {
+          searchQuery: '',
+          buyerType: 'All',
+          productCategory: 'All',
+          stage: 'All',
+          dateStatus: 'all',
+          actionQueueOnly: false
+        };
+        document.getElementById('searchInput').value = '';
+        document.getElementById('clearSearchBtn').classList.add('hidden');
+        document.getElementById('buyerTypeFilter').value = 'All';
+        document.getElementById('productFilter').value = 'All';
+        document.getElementById('stageFilter').value = 'All';
+        document.getElementById('dateStatusFilter').value = 'all';
+        this.updateActionQueueUI();
+        this.renderViews();
+      }
+
+      getFollowUpStatus(dateStr) {
+        if (!dateStr) return 'upcoming';
+        if (dateStr < TODAY) return 'overdue';
+        if (dateStr === TODAY) return 'due_today';
+        return 'upcoming';
+      }
+
+      getDaysDiff(dateStr) {
+        if (!dateStr) return 0;
+        const target = new Date(dateStr);
+        const ref = new Date(TODAY);
+        const diffTime = target.getTime() - ref.getTime();
+        return Math.round(diffTime / (1000 * 60 * 60 * 24));
+      }
+
+      getFilteredLeads() {
+        const query = this.filters.searchQuery.trim().toLowerCase();
+
+        return this.leads.filter((lead) => {
+          const status = this.getFollowUpStatus(lead.nextFollowUpDate);
+
+          // Action Queue Filter (Overdue or Due Today only)
+          if (this.filters.actionQueueOnly) {
+            if (status !== 'overdue' && status !== 'due_today') return false;
+          }
+
+          // Date Status filter
+          if (this.filters.dateStatus !== 'all') {
+            if (status !== this.filters.dateStatus) return false;
+          }
+
+          // Buyer Type
+          if (this.filters.buyerType !== 'All' && lead.buyerType !== this.filters.buyerType) {
+            return false;
+          }
+
+          // Product Category
+          if (this.filters.productCategory !== 'All' && lead.productCategory !== this.filters.productCategory) {
+            return false;
+          }
+
+          // Stage
+          if (this.filters.stage !== 'All' && lead.stage !== this.filters.stage) {
+            return false;
+          }
+
+          // Search Query
+          if (query) {
+            const haystack = [
+              lead.companyName,
+              lead.location,
+              lead.phone,
+              lead.email,
+              lead.productInterest,
+              lead.notes,
+              lead.contactPerson || '',
+              lead.sampleTrackingNumber || '',
+              lead.buyerType
+            ].join(' ').toLowerCase();
+
+            if (!haystack.includes(query)) return false;
+          }
+
+          return true;
+        });
+      }
+
+      renderAll() {
+        this.renderKpis();
+        this.renderViews();
+      }
+
+      renderKpis() {
+        let overdue = 0;
+        let dueToday = 0;
+        let samples = 0;
+
+        this.leads.forEach(l => {
+          const s = this.getFollowUpStatus(l.nextFollowUpDate);
+          if (s === 'overdue') overdue++;
+          if (s === 'due_today') dueToday++;
+          if (l.stage === 'Sample Dispatched') samples++;
+        });
+
+        document.getElementById('kpiTotal').textContent = this.leads.length;
+        document.getElementById('kpiOverdue').textContent = overdue;
+        document.getElementById('kpiDueToday').textContent = dueToday;
+        document.getElementById('kpiSamples').textContent = samples;
+
+        const actionQueueCount = overdue + dueToday;
+        document.getElementById('actionQueuePill').textContent = `${actionQueueCount} Leads`;
+      }
+
+      renderViews() {
+        const filtered = this.getFilteredLeads();
+        document.getElementById('filterResultCount').textContent = filtered.length;
+
+        // Has active filter?
+        const hasFilters = this.filters.searchQuery ||
+          this.filters.buyerType !== 'All' ||
+          this.filters.productCategory !== 'All' ||
+          this.filters.stage !== 'All' ||
+          this.filters.dateStatus !== 'all' ||
+          this.filters.actionQueueOnly;
+
+        document.getElementById('resetFiltersBtn').classList.toggle('hidden', !hasFilters);
+
+        this.renderTable(filtered);
+        this.renderKanban(filtered);
+        lucide.createIcons();
+      }
+
+      renderTable(leads) {
+        const tbody = document.getElementById('leadsTableBody');
+        const empty = document.getElementById('tableEmptyState');
+
+        if (leads.length === 0) {
+          tbody.innerHTML = '';
+          empty.classList.remove('hidden');
+          return;
+        }
+
+        empty.classList.add('hidden');
+        tbody.innerHTML = leads.map(l => {
+          const status = this.getFollowUpStatus(l.nextFollowUpDate);
+          const diffDays = this.getDaysDiff(l.nextFollowUpDate);
+
+          // Follow-up Badge
+          let dateBadge = '';
+          if (status === 'overdue') {
+            const daysAgo = Math.abs(diffDays);
+            dateBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-red-100 text-red-700 border border-red-200">
+              <i data-lucide="alert-triangle" class="w-3 h-3 text-red-600"></i> Overdue (${daysAgo}d ago)
+            </span>`;
+          } else if (status === 'due_today') {
+            dateBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">
+              <i data-lucide="bell" class="w-3 h-3 text-amber-700"></i> Due Today
+            </span>`;
+          } else {
+            dateBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200">
+              <i data-lucide="calendar" class="w-3 h-3 text-slate-500"></i> ${l.nextFollowUpDate} (${diffDays > 0 ? '+' + diffDays + 'd' : ''})
+            </span>`;
+          }
+
+          // Buyer Track Pill
+          const isExporter = l.buyerType === 'Indian Merchant Exporter';
+          const trackPill = isExporter
+            ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                <span>🇮🇳</span> Indian Exporter
+              </span>`
+            : `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-cyan-50 text-cyan-800 border border-cyan-200">
+                <span>🌐</span> Intl Importer
+              </span>`;
+
+          // Stage Badge
+          let stageBadge = '';
+          if (l.stage === 'New Lead') {
+            stageBadge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200">1. New Lead</span>`;
+          } else if (l.stage === 'Intro Sent') {
+            stageBadge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 text-indigo-700 border border-indigo-200">2. Intro Sent</span>`;
+          } else if (l.stage === 'Sample Dispatched') {
+            stageBadge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700 border border-blue-200">3. Sample Dispatched</span>`;
+          } else if (l.stage === 'Price Negotiation') {
+            stageBadge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-200">4. Price Negotiation</span>`;
+          } else if (l.stage === 'Closed Won') {
+            stageBadge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">5. Closed Won</span>`;
+          }
+
+          // Clean phone for WhatsApp
+          const cleanPhone = l.phone.replace(/[^0-9]/g, '');
+
+          return `
+            <tr class="hover:bg-slate-50/80 transition-colors ${status === 'overdue' ? 'bg-red-50/20' : status === 'due_today' ? 'bg-amber-50/20' : ''}">
+              <!-- Company & Location -->
+              <td class="py-3 px-4">
+                <div class="font-bold text-slate-900 text-xs">${this.escapeHtml(l.companyName)}</div>
+                <div class="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-slate-400"></i> ${this.escapeHtml(l.location)}
+                  ${l.contactPerson ? `• <span class="text-slate-600">${this.escapeHtml(l.contactPerson)}</span>` : ''}
+                </div>
+                ${l.notes ? `<div class="text-[11px] text-slate-500 mt-1 line-clamp-1 italic bg-slate-50/80 px-1.5 py-0.5 rounded border border-slate-100" title="${this.escapeHtml(l.notes)}">"${this.escapeHtml(l.notes)}"</div>` : ''}
+              </td>
+
+              <!-- Buyer Track -->
+              <td class="py-3 px-4 whitespace-nowrap">
+                ${trackPill}
+              </td>
+
+              <!-- Product Interest & Grade -->
+              <td class="py-3 px-4">
+                <div class="font-semibold text-slate-800">${this.escapeHtml(l.productInterest)}</div>
+                ${l.sampleTrackingNumber ? `
+                  <div class="text-[10px] text-blue-700 flex items-center gap-1 mt-0.5 font-mono bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200 w-fit">
+                    <i data-lucide="package" class="w-2.5 h-2.5"></i> ${this.escapeHtml(l.sampleTrackingNumber)}
+                  </div>
+                ` : ''}
+                ${l.estimatedOrderSize ? `<div class="text-[10px] text-slate-400 mt-0.5">Vol: ${this.escapeHtml(l.estimatedOrderSize)}</div>` : ''}
+              </td>
+
+              <!-- Pipeline Stage -->
+              <td class="py-3 px-4 whitespace-nowrap">
+                ${stageBadge}
+              </td>
+
+              <!-- Follow-Up Schedule -->
+              <td class="py-3 px-4 whitespace-nowrap">
+                ${dateBadge}
+                <div class="text-[10px] text-slate-400 mt-1">Last: ${l.lastContactDate || 'None'}</div>
+              </td>
+
+              <!-- 1-Click Outreach (WhatsApp & Email) -->
+              <td class="py-3 px-4 whitespace-nowrap">
+                <div class="flex items-center space-x-1.5">
+                  <!-- WhatsApp Button -->
+                  <button 
+                    onclick="app.openWhatsAppModal('${l.id}')"
+                    class="inline-flex items-center space-x-1 px-2.5 py-1 text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-md shadow-2xs transition-colors"
+                    title="Send WhatsApp message tailored to ${l.buyerType}"
+                  >
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    <span>WhatsApp</span>
+                  </button>
+
+                  <!-- Email Button -->
+                  <a 
+                    href="mailto:${encodeURIComponent(l.email)}?subject=${encodeURIComponent('Bulk Supply of ' + l.productInterest + ' - Navex Agro Exports')}&body=${encodeURIComponent(this.generateEmailBody(l))}"
+                    class="inline-flex items-center space-x-1 px-2 py-1 text-[11px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-md border border-slate-300 transition-colors"
+                    title="Send Email to ${l.email}"
+                  >
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-600"></i>
+                    <span>Email</span>
+                  </a>
+                </div>
+              </td>
+
+              <!-- Quick Log (+3d / +7d) -->
+              <td class="py-3 px-4 whitespace-nowrap text-center">
+                <div class="inline-flex rounded-md shadow-2xs border border-slate-200 bg-white p-0.5">
+                  <button 
+                    onclick="app.quickMarkContacted('${l.id}', 3)"
+                    class="px-2 py-1 text-[10px] font-bold text-indigo-700 hover:bg-indigo-50 rounded transition-colors"
+                    title="Mark Contacted & Push Follow-up +3 Days (Indian Exporters)"
+                  >
+                    +3d
+                  </button>
+                  <span class="w-px bg-slate-200 my-0.5"></span>
+                  <button 
+                    onclick="app.quickMarkContacted('${l.id}', 7)"
+                    class="px-2 py-1 text-[10px] font-bold text-cyan-700 hover:bg-cyan-50 rounded transition-colors"
+                    title="Mark Contacted & Push Follow-up +7 Days (International Importers)"
+                  >
+                    +7d
+                  </button>
+                </div>
+              </td>
+
+              <!-- Actions (Edit/Delete) -->
+              <td class="py-3 px-4 whitespace-nowrap text-right">
+                <div class="flex items-center justify-end space-x-1">
+                  <button 
+                    onclick="app.openLeadModal('${l.id}')"
+                    class="p-1.5 text-slate-500 hover:text-emerald-700 rounded-md hover:bg-slate-100"
+                    title="Edit Lead"
+                  >
+                    <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                  </button>
+                  <button 
+                    onclick="app.deleteLead('${l.id}')"
+                    class="p-1.5 text-slate-400 hover:text-red-600 rounded-md hover:bg-red-50"
+                    title="Delete Lead"
+                  >
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      renderKanban(leads) {
+        const stages = ['New Lead', 'Intro Sent', 'Sample Dispatched', 'Price Negotiation', 'Closed Won'];
+
+        stages.forEach(stage => {
+          const colEl = document.querySelector(`.kanban-dropzone[data-stage="${stage}"]`);
+          const badgeEl = document.querySelector(`.kanban-col[data-stage="${stage}"] .kanban-badge`);
+          if (!colEl) return;
+
+          const stageLeads = leads.filter(l => l.stage === stage);
+          if (badgeEl) badgeEl.textContent = stageLeads.length;
+
+          if (stageLeads.length === 0) {
+            colEl.innerHTML = `
+              <div class="h-28 border border-dashed border-slate-300 rounded-xl flex items-center justify-center text-slate-400 text-[11px] font-medium">
+                Drop leads here
+              </div>
+            `;
+            return;
+          }
+
+          colEl.innerHTML = stageLeads.map(l => {
+            const status = this.getFollowUpStatus(l.nextFollowUpDate);
+            const isExporter = l.buyerType === 'Indian Merchant Exporter';
+
+            let urgencyTag = '';
+            if (status === 'overdue') {
+              urgencyTag = '<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-700">⚠️ Overdue</span>';
+            } else if (status === 'due_today') {
+              urgencyTag = '<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">🔔 Due Today</span>';
+            }
+
+            return `
+              <div 
+                class="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs hover:shadow-md transition-all cursor-grab active:cursor-grabbing text-xs space-y-2.5"
+                draggable="true"
+                data-lead-id="${l.id}"
+                ondragstart="app.handleDragStart(event, '${l.id}')"
+              >
+                <!-- Top Row: Track & Urgency -->
+                <div class="flex items-center justify-between gap-1">
+                  <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${isExporter ? 'bg-indigo-50 text-indigo-700' : 'bg-cyan-50 text-cyan-800'}">
+                    ${isExporter ? '🇮🇳 Indian Exporter' : '🌐 Intl Importer'}
+                  </span>
+                  ${urgencyTag}
+                </div>
+
+                <!-- Company & Product -->
+                <div>
+                  <h4 class="font-bold text-slate-900 leading-snug">${this.escapeHtml(l.companyName)}</h4>
+                  <p class="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1">
+                    <i data-lucide="map-pin" class="w-3 h-3 text-slate-400"></i> ${this.escapeHtml(l.location)}
+                  </p>
+                  <p class="text-[11px] font-semibold text-emerald-800 mt-1">${this.escapeHtml(l.productInterest)}</p>
+                </div>
+
+                ${l.sampleTrackingNumber ? `
+                  <div class="text-[10px] font-mono bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded border border-blue-200">
+                    AWB: ${this.escapeHtml(l.sampleTrackingNumber)}
+                  </div>
+                ` : ''}
+
+                <!-- Notes snippet -->
+                ${l.notes ? `
+                  <p class="text-[10px] text-slate-500 line-clamp-2 italic bg-slate-50 p-1 rounded">
+                    "${this.escapeHtml(l.notes)}"
+                  </p>
+                ` : ''}
+
+                <!-- Bottom Action Row -->
+                <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <div class="flex items-center space-x-1">
+                    <button 
+                      onclick="app.openWhatsAppModal('${l.id}')"
+                      class="p-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded transition-colors"
+                      title="WhatsApp outreach"
+                    >
+                      <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <a 
+                      href="mailto:${encodeURIComponent(l.email)}"
+                      class="p-1 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded transition-colors"
+                      title="Email outreach"
+                    >
+                      <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                    </a>
+                  </div>
+
+                  <!-- Quick contact log button -->
+                  <div class="flex items-center space-x-1">
+                    <button 
+                      onclick="app.quickMarkContacted('${l.id}', ${isExporter ? 3 : 7})"
+                      class="px-2 py-0.5 text-[10px] font-bold rounded bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 border border-slate-200"
+                      title="Mark contacted and add ${isExporter ? 3 : 7} days"
+                    >
+                      +${isExporter ? '3d' : '7d'}
+                    </button>
+                    <button 
+                      onclick="app.openLeadModal('${l.id}')"
+                      class="p-1 text-slate-400 hover:text-slate-700"
+                      title="Edit lead"
+                    >
+                      <i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        });
+      }
+
+      initKanbanDragDrop() {
+        const dropzones = document.querySelectorAll('.kanban-dropzone');
+        dropzones.forEach(dz => {
+          dz.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dz.classList.add('drag-over');
+          });
+          dz.addEventListener('dragleave', () => {
+            dz.classList.remove('drag-over');
+          });
+          dz.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dz.classList.remove('drag-over');
+            const leadId = e.dataTransfer.getData('text/plain');
+            const targetStage = dz.getAttribute('data-stage');
+            if (leadId && targetStage) {
+              this.updateLeadStage(leadId, targetStage);
+            }
+          });
+        });
+      }
+
+      handleDragStart(event, leadId) {
+        event.dataTransfer.setData('text/plain', leadId);
+      }
+
+      updateLeadStage(leadId, newStage) {
+        const lead = this.leads.find(l => l.id === leadId);
+        if (lead && lead.stage !== newStage) {
+          lead.stage = newStage;
+          this.saveLeads();
+          this.renderAll();
+          this.showToast(`Updated ${lead.companyName} stage to "${newStage}"`, 'success');
+        }
+      }
+
+      quickMarkContacted(leadId, daysToAdd) {
+        const lead = this.leads.find(l => l.id === leadId);
+        if (!lead) return;
+
+        lead.lastContactDate = TODAY;
+        lead.nextFollowUpDate = getOffsetDate(daysToAdd);
+        this.saveLeads();
+        this.renderAll();
+
+        this.showToast(`✓ Contact logged for ${lead.companyName}! Next follow-up set to ${lead.nextFollowUpDate} (+${daysToAdd} days).`, 'success');
+      }
+
+      openLeadModal(leadId = null) {
+        const modal = document.getElementById('leadModal');
+        const title = document.getElementById('modalTitle');
+        const form = document.getElementById('leadForm');
+        form.reset();
+
+        if (leadId) {
+          const lead = this.leads.find(l => l.id === leadId);
+          if (lead) {
+            title.textContent = 'Edit Buyer Lead: ' + lead.companyName;
+            document.getElementById('leadId').value = lead.id;
+            document.getElementById('companyName').value = lead.companyName;
+            document.getElementById('buyerType').value = lead.buyerType;
+            document.getElementById('location').value = lead.location;
+            document.getElementById('contactPerson').value = lead.contactPerson || '';
+            document.getElementById('phone').value = lead.phone;
+            document.getElementById('email').value = lead.email;
+            document.getElementById('productCategory').value = lead.productCategory;
+            document.getElementById('productInterest').value = lead.productInterest;
+            document.getElementById('stage').value = lead.stage;
+            document.getElementById('nextFollowUpDate').value = lead.nextFollowUpDate;
+            document.getElementById('sampleTrackingNumber').value = lead.sampleTrackingNumber || '';
+            document.getElementById('estimatedOrderSize').value = lead.estimatedOrderSize || '';
+            document.getElementById('notes').value = lead.notes || '';
+          }
+        } else {
+          title.textContent = 'Add New Buyer Lead';
+          document.getElementById('leadId').value = '';
+          document.getElementById('nextFollowUpDate').value = TODAY;
+        }
+
+        modal.classList.remove('hidden');
+        document.getElementById('companyName').focus();
+      }
+
+      setModalDateOffset(days) {
+        document.getElementById('nextFollowUpDate').value = getOffsetDate(days);
+      }
+
+      closeLeadModal() {
+        document.getElementById('leadModal').classList.add('hidden');
+      }
+
+      handleSaveLead() {
+        const leadId = document.getElementById('leadId').value;
+        const companyName = document.getElementById('companyName').value.trim();
+        const buyerType = document.getElementById('buyerType').value;
+        const location = document.getElementById('location').value.trim();
+        const contactPerson = document.getElementById('contactPerson').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const productCategory = document.getElementById('productCategory').value;
+        const productInterest = document.getElementById('productInterest').value.trim() || productCategory;
+        const stage = document.getElementById('stage').value;
+        const nextFollowUpDate = document.getElementById('nextFollowUpDate').value;
+        const sampleTrackingNumber = document.getElementById('sampleTrackingNumber').value.trim();
+        const estimatedOrderSize = document.getElementById('estimatedOrderSize').value.trim();
+        const notes = document.getElementById('notes').value.trim();
+
+        if (!companyName || !phone || !email || !location) {
+          alert('Please fill out all required fields (*)');
+          return;
+        }
+
+        if (leadId) {
+          // Update
+          const idx = this.leads.findIndex(l => l.id === leadId);
+          if (idx !== -1) {
+            this.leads[idx] = {
+              ...this.leads[idx],
+              companyName,
+              buyerType,
+              location,
+              contactPerson,
+              phone,
+              email,
+              productCategory,
+              productInterest,
+              stage,
+              nextFollowUpDate,
+              sampleTrackingNumber,
+              estimatedOrderSize,
+              notes
+            };
+            this.showToast(`Updated details for ${companyName}!`, 'success');
+          }
+        } else {
+          // Create
+          const newLead = {
+            id: 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            companyName,
+            buyerType,
+            location,
+            contactPerson,
+            phone,
+            email,
+            productCategory,
+            productInterest,
+            stage,
+            nextFollowUpDate,
+            lastContactDate: TODAY,
+            sampleTrackingNumber,
+            estimatedOrderSize,
+            notes
+          };
+          this.leads.unshift(newLead);
+          this.showToast(`Added new lead: ${companyName}!`, 'success');
+        }
+
+        this.saveLeads();
+        this.closeLeadModal();
+        this.renderAll();
+      }
+
+      deleteLead(leadId) {
+        const lead = this.leads.find(l => l.id === leadId);
+        if (!lead) return;
+
+        if (confirm(`Are you sure you want to delete "${lead.companyName}"? This action cannot be undone.`)) {
+          this.leads = this.leads.filter(l => l.id !== leadId);
+          this.saveLeads();
+          this.renderAll();
+          this.showToast(`Deleted ${lead.companyName}`, 'info');
+        }
+      }
+
+      openWhatsAppModal(leadId) {
+        const lead = this.leads.find(l => l.id === leadId);
+        if (!lead) return;
+
+        this.activeWhatsAppLead = lead;
+        document.getElementById('waRecipient').textContent = `${lead.companyName} (${lead.phone})`;
+        document.getElementById('waTemplateSelect').value = 'default';
+        this.updateWhatsAppPreview('default');
+
+        document.getElementById('whatsappModal').classList.remove('hidden');
+        lucide.createIcons();
+      }
+
+      closeWhatsAppModal() {
+        document.getElementById('whatsappModal').classList.add('hidden');
+        this.activeWhatsAppLead = null;
+      }
+
+      updateWhatsAppPreview(templateType) {
+        if (!this.activeWhatsAppLead) return;
+        const msg = this.generateWhatsAppMessage(this.activeWhatsAppLead, templateType);
+        document.getElementById('waMessageText').value = msg;
+      }
+
+      executeWhatsAppSend() {
+        if (!this.activeWhatsAppLead) return;
+        const cleanPhone = this.activeWhatsAppLead.phone.replace(/[^0-9]/g, '');
+        const message = document.getElementById('waMessageText').value;
+        const encoded = encodeURIComponent(message);
+        const url = `https://wa.me/${cleanPhone}?text=${encoded}`;
+        
+        // Open WhatsApp
+        window.open(url, '_blank');
+        
+        // Automatically ask to mark contacted
+        this.quickMarkContacted(this.activeWhatsAppLead.id, this.activeWhatsAppLead.buyerType === 'Indian Merchant Exporter' ? 3 : 7);
+        this.closeWhatsAppModal();
+      }
+
+      generateWhatsAppMessage(lead, templateType = 'default') {
+        const company = lead.companyName || 'Team';
+        const product = lead.productInterest || 'Makhana / Chana Sattu';
+        const isExporter = lead.buyerType === 'Indian Merchant Exporter';
+
+        if (templateType === 'sample_followup') {
+          return isExporter
+            ? `Namaste ${company} Team, following up regarding the sample dispatch of ${product} from our direct processing unit in Bihar. Courier Tracking / AWB: ${lead.sampleTrackingNumber || 'Dispatched via Courier'}. Have you received and checked the puffing ratio and moisture? We are ready for your quality report!`
+            : `Dear ${company} Procurement Team, greetings from Navex Agro Exports (India). Following up on the sample shipment of ${product} sent to your facility (${lead.sampleTrackingNumber || 'Courier Dispatch'}). We would be glad to share COA, phytosanitary specs, and discuss container CIF pricing once your lab inspection is complete.`;
+        }
+
+        if (templateType === 'price_quote') {
+          return isExporter
+            ? `Namaste ${company} Team, sharing our updated competitive ex-warehouse / FOB quote for bulk ${product}. We ensure uniform sorting (<9% moisture, zero dusting). Please confirm your expected volume (MT) for this dispatch cycle.`
+            : `Dear ${company} Team, please find our export FOB/CIF quotation for ${product}. We support full private-label packaging with USFDA/APEDA compliance and lab-certified nutritional facts. Let us know your preferred port of discharge.`;
+        }
+
+        // Default Intro Template
+        if (isExporter) {
+          if (product.toLowerCase().includes('sattu') && !product.toLowerCase().includes('makhana')) {
+            return `Namaste ${company} Team, regarding bulk B2B supply of 100% pure roasted Chana Sattu processed in Bihar with high protein and traditional aroma. We supply graded material to leading exporters. Can we dispatch a 1kg testing sample to your warehouse?`;
+          }
+          return `Namaste ${company} Team, regarding bulk supply of premium handpicked Makhana (${product}) directly from our farmer-aggregation hub in Mithila, Bihar. Fresh crop, moisture <9%, strict grading (5-6+ Suta). Can we share our current spec-sheet and batch rates?`;
+        } else {
+          return `Dear ${company} Procurement Team, greetings from Navex Agro Exports, India. We are direct processors and exporters of GI-tagged Mithila Makhana (Fox Nuts / Gorgon Nuts) and traditional roasted Chana Sattu. We supply overseas distributors across UAE, USA, and UK. May we present our product catalog and export credentials?`;
+        }
+      }
+
+      generateEmailBody(lead) {
+        const company = lead.companyName || 'Team';
+        const product = lead.productInterest || 'Makhana & Chana Sattu';
+        const isExporter = lead.buyerType === 'Indian Merchant Exporter';
+
+        if (isExporter) {
+          return `Dear ${company} Team,
+
+We hope this email finds you well.
+
+We at Navex Agro Exports are direct processors and aggregators of premium grade Makhana (Fox Nuts) and traditional roasted Chana Sattu based out of Bihar.
+
+Regarding your inquiry for ${product}:
+- Origin: Mithila, Bihar (GI Tagged Hub)
+- Grades Available: 4-5 Suta, 5-6 Suta, 6+ Jumbo (19mm+)
+- Moisture: Strictly under 8.5%
+- Certifications: APEDA, FSSAI, NABL Lab Tested
+
+We can dispatch testing samples directly to your corporate warehouse or ex-factory testing facility.
+
+Looking forward to your requirements and expected volume.
+
+Warm regards,
+Export Sales Desk
+Navex Agro Exports
+Email: navexagrofarm@gmail.com`;
+        } else {
+          return `Dear ${company} Procurement Team,
+
+Greetings from Navex Agro Exports, India.
+
+We are leading agro-processors and certified exporters of Indian superfoods:
+1. Premium GI-Tagged Mithila Makhana (Fox Nuts / Popped Lotus Seeds)
+2. 100% Pure Roasted Chana Sattu (High Protein Bengal Gram Flour)
+
+Key Export Capabilities for International Importers:
+- Full compliance with APEDA, Phytosanitary, Certificate of Origin, and USFDA standards
+- Private label retail pouches (Nitrogen flushed 100g, 250g, 500g) or bulk export bags
+- CIF container shipping to Jebel Ali (UAE), Long Beach/New York (USA), Felixstowe (UK)
+
+We would welcome the opportunity to courier a sample evaluation kit to your procurement office.
+
+Kindly let us know your standard specification sheet and packaging preferences.
+
+Best regards,
+International Business Development
+Navex Agro Exports
+Website / Desk: navexagrofarm@gmail.com`;
+        }
+      }
+
+      exportCsv() {
+        const headers = [
+          'Company Name',
+          'Buyer Type',
+          'Location',
+          'Phone',
+          'Email',
+          'Product Interest',
+          'Product Category',
+          'Stage',
+          'Next Follow-Up Date',
+          'Last Contact Date',
+          'Sample Tracking #',
+          'Estimated Order Size',
+          'Notes'
+        ];
+
+        const escapeCsv = (val) => {
+          if (val === null || val === undefined) return '""';
+          const str = String(val).replace(/"/g, '""');
+          return `"${str}"`;
+        };
+
+        const rows = this.leads.map(l => [
+          escapeCsv(l.companyName),
+          escapeCsv(l.buyerType),
+          escapeCsv(l.location),
+          escapeCsv(l.phone),
+          escapeCsv(l.email),
+          escapeCsv(l.productInterest),
+          escapeCsv(l.productCategory),
+          escapeCsv(l.stage),
+          escapeCsv(l.nextFollowUpDate),
+          escapeCsv(l.lastContactDate),
+          escapeCsv(l.sampleTrackingNumber || ''),
+          escapeCsv(l.estimatedOrderSize || ''),
+          escapeCsv(l.notes)
+        ]);
+
+        const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Navex_AgroExport_Leads_${TODAY}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        this.showToast('Exported CSV successfully for Google Sheets!', 'success');
+      }
+
+      downloadCsvTemplate() {
+        const templateHeaders = 'Company Name,Buyer Type,Location,Phone,Email,Product Interest,Stage,Next Follow-Up Date,Notes\r\n';
+        const sampleRow = '"Apex Global Importers","International Importer","Dubai, UAE","+971501234567","buyer@apex.com","Makhana (6+ Suta)","Intro Sent","' + TODAY + '","Discussed CIF Jebel Ali"';
+        const content = templateHeaders + sampleRow;
+        const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Navex_Leads_Template.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      processCsvImport() {
+        const text = document.getElementById('rawCsvText').value.trim();
+        if (!text) {
+          alert('Please upload a file or paste CSV text first.');
+          return;
+        }
+
+        const lines = text.split(/\r?\n/);
+        if (lines.length < 2) {
+          alert('CSV file must have a header row and at least one data row.');
+          return;
+        }
+
+        const parseCsvLine = (t) => {
+          const res = [];
+          let cur = '';
+          let inQuotes = false;
+          for (let i = 0; i < t.length; i++) {
+            const ch = t[i];
+            if (ch === '"') {
+              if (inQuotes && t[i + 1] === '"') {
+                cur += '"';
+                i++;
+              } else {
+                inQuotes = !inQuotes;
+              }
+            } else if (ch === ',' && !inQuotes) {
+              res.push(cur.trim());
+              cur = '';
+            } else {
+              cur += ch;
+            }
+          }
+          res.push(cur.trim());
+          return res;
+        };
+
+        const headers = parseCsvLine(lines[0].toLowerCase());
+        const getIdx = (keywords) => headers.findIndex(h => keywords.some(k => h.includes(k)));
+
+        const companyIdx = getIdx(['company', 'lead', 'name']);
+        const buyerTypeIdx = getIdx(['buyer', 'type']);
+        const locIdx = getIdx(['location', 'city', 'country']);
+        const phoneIdx = getIdx(['phone', 'mobile', 'whatsapp']);
+        const emailIdx = getIdx(['email', 'mail']);
+        const prodIdx = getIdx(['product', 'interest', 'item']);
+        const stageIdx = getIdx(['stage', 'status']);
+        const followIdx = getIdx(['follow', 'next', 'date']);
+        const notesIdx = getIdx(['note', 'remark']);
+
+        let addedCount = 0;
+
+        for (let i = 1; i < lines.length; i++) {
+          const raw = lines[i].trim();
+          if (!raw) continue;
+          const cols = parseCsvLine(raw);
+          const company = (companyIdx >= 0 ? cols[companyIdx] : cols[0]) || '';
+          if (!company) continue;
+
+          const rawBuyer = (buyerTypeIdx >= 0 ? cols[buyerTypeIdx] : '').toLowerCase();
+          const buyerType = rawBuyer.includes('international') || rawBuyer.includes('importer')
+            ? 'International Importer'
+            : 'Indian Merchant Exporter';
+
+          const rawProd = (prodIdx >= 0 ? cols[prodIdx] : 'Makhana') || 'Makhana';
+          let productCat = 'Makhana';
+          if (rawProd.toLowerCase().includes('both') || (rawProd.toLowerCase().includes('makhana') && rawProd.toLowerCase().includes('sattu'))) {
+            productCat = 'Both';
+          } else if (rawProd.toLowerCase().includes('sattu')) {
+            productCat = 'Chana Sattu';
+          }
+
+          const rawStage = (stageIdx >= 0 ? cols[stageIdx] : 'New Lead') || 'New Lead';
+          let stage = 'New Lead';
+          if (rawStage.toLowerCase().includes('intro')) stage = 'Intro Sent';
+          else if (rawStage.toLowerCase().includes('sample')) stage = 'Sample Dispatched';
+          else if (rawStage.toLowerCase().includes('price') || rawStage.toLowerCase().includes('negot')) stage = 'Price Negotiation';
+          else if (rawStage.toLowerCase().includes('won') || rawStage.toLowerCase().includes('closed')) stage = 'Closed Won';
+
+          this.leads.unshift({
+            id: 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            companyName: company,
+            buyerType,
+            location: (locIdx >= 0 ? cols[locIdx] : 'India') || 'India',
+            phone: (phoneIdx >= 0 ? cols[phoneIdx] : '') || '',
+            email: (emailIdx >= 0 ? cols[emailIdx] : '') || '',
+            productInterest: rawProd,
+            productCategory: productCat,
+            stage,
+            nextFollowUpDate: (followIdx >= 0 ? cols[followIdx] : TODAY) || TODAY,
+            lastContactDate: TODAY,
+            notes: (notesIdx >= 0 ? cols[notesIdx] : '') || ''
+          });
+          addedCount++;
+        }
+
+        this.saveLeads();
+        this.renderAll();
+        document.getElementById('importModal').classList.add('hidden');
+        document.getElementById('rawCsvText').value = '';
+        document.getElementById('chosenFileName').textContent = '';
+        this.showToast(`Imported ${addedCount} leads successfully from CSV!`, 'success');
+      }
+
+      showToast(message, type = 'info') {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        
+        let colorClasses = 'bg-slate-900 text-white';
+        let icon = 'info';
+        if (type === 'success') {
+          colorClasses = 'bg-emerald-700 text-white shadow-emerald-900/20';
+          icon = 'check-circle-2';
+        } else if (type === 'alert') {
+          colorClasses = 'bg-red-700 text-white shadow-red-900/20';
+          icon = 'alert-triangle';
+        }
+
+        toast.className = `${colorClasses} pointer-events-auto px-4 py-3 rounded-xl shadow-lg flex items-center space-x-2 text-xs font-semibold transform transition-all duration-300 translate-y-2 opacity-0`;
+        toast.innerHTML = `
+          <i data-lucide="${icon}" class="w-4 h-4 shrink-0"></i>
+          <span>${message}</span>
+        `;
+        container.appendChild(toast);
+        lucide.createIcons();
+
+        // Animate in
+        setTimeout(() => {
+          toast.classList.remove('translate-y-2', 'opacity-0');
+        }, 10);
+
+        // Auto remove
+        setTimeout(() => {
+          toast.classList.add('translate-y-2', 'opacity-0');
+          setTimeout(() => {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+          }, 300);
+        }, 3500);
+      }
+
+      escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+    }
+
+    // Initialize application instance on DOM load
+    let app;
+    window.addEventListener('DOMContentLoaded', () => {
+      app = new AgroCRM();
+      window.app = app;
+    });
+  </script>
+</body>
+</html>

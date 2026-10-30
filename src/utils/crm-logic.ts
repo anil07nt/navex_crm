@@ -93,6 +93,130 @@ export function generateWhatsAppMessage(lead: Lead, templateType: string = 'defa
   }
 }
 
+export function generateEmailContent(lead: Lead, templateType: string = 'intro'): { subject: string; body: string } {
+  const company = lead.companyName || 'Team';
+  const product = lead.productInterest || 'Makhana & Chana Sattu';
+  const isExporter = lead.buyerType === 'Indian Merchant Exporter';
+
+  let subject = '';
+  let body = '';
+
+  if (templateType === 'sample_followup') {
+    subject = `Sample Evaluation & Quality Specs - ${product} - Navex Agro Exports`;
+    body = isExporter
+      ? `Dear ${company} Team,
+
+Following up on the sample dispatch of ${product} sent to your facility.
+Dispatch / Tracking Reference: ${lead.sampleTrackingNumber || 'Dispatched via Courier'}.
+
+Key Testing Points:
+1. Suta grading consistency & puffing expansion
+2. Moisture content (certified strictly under 8.5%)
+3. Hard seed (kani) zero-defect count
+
+Kindly let us know if your lab testing is complete so we can finalize volume allocation and forward dispatch schedules.
+
+Warm regards,
+Export Sales Desk
+Navex Agro Exports
+Email: info@navexagrofarm.com`
+      : `Dear ${company} Procurement Team,
+
+Greetings from Navex Agro Exports (India).
+
+We are writing to follow up on the commercial evaluation sample of ${product} dispatched to your procurement office (Tracking: ${lead.sampleTrackingNumber || 'Courier Dispatch'}).
+
+We have attached the Certificate of Analysis (COA) and phytosanitary declarations for your QA team. Once your sensory and lab trials are complete, we would be pleased to schedule a discussion on CIF container pricing and private label carton dimensions.
+
+Looking forward to your valuable feedback.
+
+Best regards,
+International Business Development
+Navex Agro Exports
+Email: info@navexagrofarm.com`;
+  } else if (templateType === 'price_quote') {
+    subject = `Commercial FOB & Ex-Warehouse Quote: Bulk ${product} - Navex Agro`;
+    body = isExporter
+      ? `Dear ${company} Procurement Team,
+
+Please find our updated bulk supply rate sheet for ${product} from our Mithila processing hub.
+
+- Grade: Machine-graded and sorted (moisture < 8.5%, zero dust)
+- Packaging: 10kg / 20kg food-grade master bags or customized bags
+- Delivery: Ex-warehouse or FOR your processing center
+
+Please confirm your anticipated tonnage (MT) for the upcoming dispatch cycle so we can lock in priority allocation.
+
+Warm regards,
+Export Sales Desk
+Navex Agro Exports
+Email: info@navexagrofarm.com`
+      : `Dear ${company} Procurement Team,
+
+Please review our updated export FOB (Mundra / Nhava Sheva) and CIF quotation for bulk supply of ${product}.
+
+Our export offering includes:
+- APEDA & FSSAI certified processing
+- USFDA & International phytosanitary compliance
+- Private label nitrogen-flushed pouch packaging or bulk 20kg export cartons
+- Reliable container stuffing and transit to your port of discharge
+
+Please let us know your preferred delivery terms (FOB/CIF) and initial container volume.
+
+Best regards,
+International Business Development
+Navex Agro Exports
+Email: info@navexagrofarm.com`;
+  } else {
+    // Default intro
+    subject = `Bulk Supply & Direct Processing of ${product} - Navex Agro Exports`;
+    body = isExporter
+      ? `Dear ${company} Team,
+
+We hope this email finds you well.
+
+We at Navex Agro Exports are direct processors and aggregators of premium grade Makhana (Fox Nuts) and traditional roasted Chana Sattu based out of Bihar.
+
+Regarding your inquiry for ${product}:
+- Origin: Mithila, Bihar (GI Tagged Hub)
+- Grades Available: 4-5 Suta, 5-6 Suta, 6+ Jumbo (19mm+)
+- Moisture: Strictly under 8.5%
+- Certifications: APEDA, FSSAI, NABL Lab Tested
+
+We can dispatch testing samples directly to your corporate warehouse or ex-factory testing facility.
+
+Looking forward to your requirements and expected volume.
+
+Warm regards,
+Export Sales Desk
+Navex Agro Exports
+Email: info@navexagrofarm.com`
+      : `Dear ${company} Procurement Team,
+
+Greetings from Navex Agro Exports, India.
+
+We are leading agro-processors and certified exporters of Indian superfoods:
+1. Premium GI-Tagged Mithila Makhana (Fox Nuts / Popped Lotus Seeds)
+2. 100% Pure Roasted Chana Sattu (High Protein Bengal Gram Flour)
+
+Key Export Capabilities for International Importers:
+- Full compliance with APEDA, Phytosanitary, Certificate of Origin, and USFDA standards
+- Private label retail pouches (Nitrogen flushed 100g, 250g, 500g) or bulk export bags
+- CIF container shipping to Jebel Ali (UAE), Long Beach/New York (USA), Felixstowe (UK)
+
+We would welcome the opportunity to courier a sample evaluation kit to your procurement office.
+
+Kindly let us know your standard specification sheet and packaging preferences.
+
+Best regards,
+International Business Development
+Navex Agro Exports
+Email: info@navexagrofarm.com`;
+  }
+
+  return { subject, body };
+}
+
 export function calculateKpis(leads: Lead[], referenceToday?: string) {
   const today = referenceToday || getTodayISO();
   let overdue = 0;

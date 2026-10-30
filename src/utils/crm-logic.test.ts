@@ -5,6 +5,7 @@ import {
   addDaysToDate,
   cleanPhoneNumber,
   generateWhatsAppMessage,
+  generateEmailContent,
   calculateKpis,
   filterLeads,
   exportLeadsToCsv,
@@ -75,6 +76,34 @@ test('generateWhatsAppMessage customizes by Buyer Type and Product Interest', ()
   const intlMsg = generateWhatsAppMessage(intlLead, 'default');
   assert.ok(intlMsg.includes('Dear Al Maya Trading Procurement Team'));
   assert.ok(intlMsg.includes('GI-tagged Mithila Makhana'));
+});
+
+test('generateEmailContent formats professional email templates with info@navexagrofarm.com', () => {
+  const indianLead: Lead = {
+    id: '1',
+    companyName: 'Glee Impex',
+    buyerType: 'Indian Merchant Exporter',
+    location: 'New Delhi',
+    phone: '+919319294022',
+    email: 'glee@example.com',
+    productInterest: 'Makhana (5-6+ Suta Jumbo)',
+    productCategory: 'Makhana',
+    stage: 'Sample Dispatched',
+    nextFollowUpDate: '2026-10-30',
+    lastContactDate: '2026-10-25',
+    notes: 'Important client',
+    sampleTrackingNumber: 'AWB-8839201',
+  };
+
+  const email = generateEmailContent(indianLead, 'intro');
+  assert.ok(email.subject.includes('Bulk Supply'));
+  assert.ok(email.body.includes('info@navexagrofarm.com'));
+  assert.ok(email.body.includes('Glee Impex'));
+
+  const sampleEmail = generateEmailContent(indianLead, 'sample_followup');
+  assert.ok(sampleEmail.subject.includes('Sample Evaluation'));
+  assert.ok(sampleEmail.body.includes('AWB-8839201'));
+  assert.ok(sampleEmail.body.includes('info@navexagrofarm.com'));
 });
 
 test('calculateKpis computes overdue, due today, samples, and action queue counts', () => {
